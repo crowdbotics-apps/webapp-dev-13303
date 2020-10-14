@@ -8,8 +8,8 @@ from django.db import models
 
 class CustomText(models.Model):
     titles = models.CharField(
-        max_length=150,
         blank=True,
+        max_length=150,
     )
     name = models.BinaryField(
         null=True,
@@ -74,3 +74,8 @@ class Test(models.Model):
 class Testtt(models.Model):
     "Generated Model"
     testt = models.BinaryField()
+
+
+class Model(models.Model):
+    "Generated Model"
+    model_1 = models.BigIntegerField()

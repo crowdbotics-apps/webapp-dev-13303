@@ -3,6 +3,7 @@ from rest_framework import authentication
 from .serializers import (
     CustomTextSerializer,
     HomePageSerializer,
+    ModelSerializer,
     TestSerializer,
     TestingSerializer,
 )
@@ -19,7 +20,7 @@ from home.api.v1.serializers import (
     HomePageSerializer,
     UserSerializer,
 )
-from home.models import CustomText, HomePage, Test, Testing
+from home.models import CustomText, HomePage, Model, Test, Testing
 
 
 class SignupViewSet(ModelViewSet):
@@ -75,3 +76,12 @@ class TestingViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = Testing.objects.all()
+
+
+class ModelViewSet(viewsets.ModelViewSet):
+    serializer_class = ModelSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Model.objects.all()
